@@ -15,9 +15,9 @@ public class TestArrayList {
         //2、使用Collections.synchronizedList(new ArrayList<>());
         //3、readWrightArrayList
 
-        for (int i = 1; i <= 30 ; i++) {
-            new Thread(()->{
-                String uuid = UUID.randomUUID().toString().substring(0,8);
+        for (int i = 1; i <= 30; i++) {
+            new Thread(() -> {
+                String uuid = UUID.randomUUID().toString().substring(0, 8);
 //                arrayList.add(uuid);
 //                vector.add(uuid);
 //                syncArrayList.add(uuid);

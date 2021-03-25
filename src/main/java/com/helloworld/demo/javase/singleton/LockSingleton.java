@@ -6,12 +6,14 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LockSingleton {
     static Lock lock = new ReentrantLock();
     private static LockSingleton instance = null;
+
     private LockSingleton() {
     }
-    public static LockSingleton getInstance(){
+
+    public static LockSingleton getInstance() {
         try {
             lock.lock();
-            if(instance == null){
+            if (instance == null) {
                 instance = new LockSingleton();
             }
         } catch (Exception e) {
@@ -24,7 +26,7 @@ public class LockSingleton {
 
     public static void main(String[] args) {
         LockSingleton instance = LockSingleton.getInstance();
-        System.out.println("main thread instance is ---- > " +instance);
+        System.out.println("main thread instance is ---- > " + instance);
         new Thread(() -> System.out.println(Thread.currentThread().getName() + " ---- >   " + LockSingleton.getInstance())).start();
         Lock lock = new ReentrantLock();
     }

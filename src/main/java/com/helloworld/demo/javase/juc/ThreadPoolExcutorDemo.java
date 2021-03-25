@@ -5,7 +5,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-class MyRunable implements Runnable{
+class MyRunable implements Runnable {
     @Override
     public void run() {
         System.out.println("excute runable ... ");

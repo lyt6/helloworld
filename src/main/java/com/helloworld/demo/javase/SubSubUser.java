@@ -1,6 +1,6 @@
 package com.helloworld.demo.javase;
 
-public class SubSubUser extends SubUser{
+public class SubSubUser extends SubUser {
 
     @Override
     void test() {

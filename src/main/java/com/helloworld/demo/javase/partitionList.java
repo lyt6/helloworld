@@ -19,19 +19,19 @@ public class partitionList {
         strategyMap.put(4L, new BigDecimal(0.2));
 
         Map<Long, List<Integer>> resultMap = new HashMap();
-        resultMap.put(1L,new ArrayList<>());
-        resultMap.put(2L,new ArrayList<>());
-        resultMap.put(3L,new ArrayList<>());
-        resultMap.put(4L,new ArrayList<>());
+        resultMap.put(1L, new ArrayList<>());
+        resultMap.put(2L, new ArrayList<>());
+        resultMap.put(3L, new ArrayList<>());
+        resultMap.put(4L, new ArrayList<>());
 
         Iterator<Integer> iterator = list.iterator();
         while (iterator.hasNext()) {
             strategyMap.entrySet().stream().forEach(e -> {
                 List<Integer> partitionList = resultMap.get(e.getKey());
-                if(partitionList == null){
+                if (partitionList == null) {
                     partitionList = new ArrayList<>();
                 }
-                if(partitionList.size() < e.getValue().doubleValue()*list.size()){
+                if (partitionList.size() < e.getValue().doubleValue() * list.size()) {
                     partitionList.add(iterator.next());
                 }
 

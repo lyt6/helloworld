@@ -1,4 +1,5 @@
 package com.helloworld.demo.leetcode.tree;
+
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
@@ -13,10 +14,11 @@ public class BinaryTreeReverse {
     /**
      * TreeNode
      */
-    public static class TreeNode{
+    public static class TreeNode {
         TreeNode left;
         TreeNode right;
         int val;
+
         public TreeNode(int val) {
             this.val = val;
         }
@@ -24,24 +26,25 @@ public class BinaryTreeReverse {
 
     /**
      * 栈-翻转二叉树
+     *
      * @param root
      * @return
      */
-    public TreeNode reverseByStack(TreeNode root){
-        if(Objects.isNull(root)) {
+    public TreeNode reverseByStack(TreeNode root) {
+        if (Objects.isNull(root)) {
             return null;
         }
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
             TreeNode left = node.left;
             node.left = node.right;
-            node.right= left;
-            if(Objects.nonNull(node.left)){
+            node.right = left;
+            if (Objects.nonNull(node.left)) {
                 stack.push(node.left);
             }
-            if(Objects.nonNull(node.right)){
+            if (Objects.nonNull(node.right)) {
                 stack.push(node.right);
             }
         }
@@ -50,24 +53,25 @@ public class BinaryTreeReverse {
 
     /**
      * 队列-翻转二叉树
+     *
      * @param root
      * @return
      */
-    public TreeNode reverseByQueue(TreeNode root){
-        if(Objects.isNull(root)){
+    public TreeNode reverseByQueue(TreeNode root) {
+        if (Objects.isNull(root)) {
             return null;
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
             TreeNode left = node.left;
             node.left = node.right;
             node.right = left;
-            if(Objects.nonNull(node.left)){
+            if (Objects.nonNull(node.left)) {
                 queue.offer(node.left);
             }
-            if(Objects.nonNull(node.right)){
+            if (Objects.nonNull(node.right)) {
                 queue.offer(node.right);
             }
         }
@@ -78,11 +82,12 @@ public class BinaryTreeReverse {
      * 递归-翻转二叉树
      * 1、先互换左手节点
      * 2、然后分别互换左右子节点
+     *
      * @param root
      * @return
      */
-    public TreeNode reverseByRecursion(TreeNode root){
-        if(Objects.isNull(root)){
+    public TreeNode reverseByRecursion(TreeNode root) {
+        if (Objects.isNull(root)) {
             return null;
         }
         TreeNode left = root.left;
@@ -97,6 +102,7 @@ public class BinaryTreeReverse {
      * 翻转二叉树
      * 1、先转换左右子节点
      * 2、然后互换左右节点
+     *
      * @param root
      * @return
      */

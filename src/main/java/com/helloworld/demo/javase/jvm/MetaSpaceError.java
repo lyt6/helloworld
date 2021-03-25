@@ -10,7 +10,9 @@ import java.lang.reflect.Method;
  * 使用Java -XX:+PrintFlagsInitial命令查看本机的初始化参数，-XX:MetaspaceSize为21810376B(约20M)
  */
 public class MetaSpaceError {
-    static class OOMTest{}
+    static class OOMTest {
+    }
+
     public static void main(String[] args) {
         int i = 0;
         try {
@@ -21,13 +23,13 @@ public class MetaSpaceError {
                 enhancer.setCallback(new MethodInterceptor() {
                     @Override
                     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-                        return methodProxy.invoke(o,args);
+                        return methodProxy.invoke(o, args);
                     }
                 });
                 enhancer.create();
             }
         } catch (Throwable throwable) {
-            System.out.println("--- metaspace OOM i = "+i);
+            System.out.println("--- metaspace OOM i = " + i);
             throwable.printStackTrace();
         }
     }

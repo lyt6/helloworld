@@ -12,9 +12,9 @@ public class ThreadPoolTest {
             integers.add(i);
 
         }
-        integers.parallelStream().forEach(i->{
-            executorService.submit(()->{
-                System.out.println(Thread.currentThread().getName()+ " ---- "+i);
+        integers.parallelStream().forEach(i -> {
+            executorService.submit(() -> {
+                System.out.println(Thread.currentThread().getName() + " ---- " + i);
             });
         });
         executorService.shutdown();

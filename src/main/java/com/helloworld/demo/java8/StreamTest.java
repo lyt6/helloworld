@@ -13,7 +13,7 @@ public class StreamTest {
         //flatMap返回值必须是Stream
 //        Stream.of(1,2,3).flatMap(i->Stream.of(i*10)).forEach(System.out::println);
 
-        Stream.of(1,2,3,4,5).sorted().forEach(System.out::println);
+        Stream.of(1, 2, 3, 4, 5).sorted().forEach(System.out::println);
 //        Stream.of(3,2,1).sorted().forEach(System.out::println);
 
     }

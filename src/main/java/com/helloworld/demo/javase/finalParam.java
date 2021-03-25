@@ -2,7 +2,7 @@ package com.helloworld.demo.javase;
 
 public class finalParam {
 
-    public static void testFinalParam(final String name){
+    public static void testFinalParam(final String name) {
         //name = "123";
         System.out.println(name);
     }
@@ -27,9 +27,9 @@ public class finalParam {
     }
 
     static void test(Person person1, Person person2, final Person person3) {
-        System.out.println("before person1"+person1);
+        System.out.println("before person1" + person1);
         person1 = new Person("n1", 10);
-        System.out.println("after person1"+person1);
+        System.out.println("after person1" + person1);
         person2.setAge(20);
         person3.setAge(30);
     }

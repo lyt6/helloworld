@@ -10,9 +10,10 @@ import java.lang.reflect.Proxy;
 public class JdkProxyTest implements InvocationHandler {
 
     Object target;
-    public Object bind(Object target){
+
+    public Object bind(Object target) {
         this.target = target;
-        return Proxy.newProxyInstance(target.getClass().getClassLoader(),target.getClass().getInterfaces(),this);
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
 
     @Override
@@ -26,8 +27,8 @@ public class JdkProxyTest implements InvocationHandler {
 
     public static void main(String[] args) {
         JdkProxyTest jdkProxyTest = new JdkProxyTest();
-        UserService bind = (UserService) jdkProxyTest.bind(new UserServiceImpl());
-        User user = bind.getUser();
+        UserService userService = (UserService) jdkProxyTest.bind(new UserServiceImpl());
+        User user = userService.getUser();
         System.out.println(user.toString());
     }
 

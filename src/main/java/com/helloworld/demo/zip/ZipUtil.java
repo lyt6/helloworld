@@ -10,20 +10,15 @@ import java.io.File;
 /**
  * Created by wzj on 2017/11/27.
  */
-public class ZipUtil
-{
-    public static void main(String[] args)
-    {
-        try
-        {
+public class ZipUtil {
+    public static void main(String[] args) {
+        try {
             //zip("D:\\资料", "D:\\资料.zip", "123");
-            zip("/Users/forward/Desktop/demo_test.xlsx","/Users/forward/Desktop/demo_test.zip","123456");
-        }
-        catch (ZipException e)
-        {
+            zip("/Users/forward/Desktop/demo_test.xlsx", "/Users/forward/Desktop/demo_test.zip", "123456");
+        } catch (ZipException e) {
             e.printStackTrace();
         }
-     }
+    }
 
     /**
      * 压缩
@@ -33,8 +28,7 @@ public class ZipUtil
      * @param passwd  密码 不是必填
      * @throws ZipException 异常
      */
-    public static void zip(String srcFile, String dest, String passwd) throws ZipException
-    {
+    public static void zip(String srcFile, String dest, String passwd) throws ZipException {
         File srcfile = new File(srcFile);
 
         //创建目标文件
@@ -43,79 +37,61 @@ public class ZipUtil
         par.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
         par.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
 
-        if (passwd != null)
-        {
+        if (passwd != null) {
             par.setEncryptFiles(true);
             par.setEncryptionMethod(Zip4jConstants.ENC_METHOD_STANDARD);
             par.setPassword(passwd.toCharArray());
         }
 
         ZipFile zipfile = new ZipFile(destname);
-        if (srcfile.isDirectory())
-        {
+        if (srcfile.isDirectory()) {
             zipfile.addFolder(srcfile, par);
-        }
-        else
-        {
+        } else {
             zipfile.addFile(srcfile, par);
         }
     }
 
     /**
      * 解压
+     *
      * @param zipfile 压缩包文件
-     * @param dest 目标文件
-     * @param passwd 密码
+     * @param dest    目标文件
+     * @param passwd  密码
      * @throws ZipException 抛出异常
      */
-    public static void unZip(String zipfile, String dest, String passwd) throws ZipException
-    {
+    public static void unZip(String zipfile, String dest, String passwd) throws ZipException {
         ZipFile zfile = new ZipFile(zipfile);
         zfile.setFileNameCharset("UTF-8");//在GBK系统中需要设置
-        if (!zfile.isValidZipFile())
-        {
+        if (!zfile.isValidZipFile()) {
             throw new ZipException("压缩文件不合法，可能已经损坏！");
         }
 
         File file = new File(dest);
-        if (file.isDirectory() && !file.exists())
-        {
+        if (file.isDirectory() && !file.exists()) {
             file.mkdirs();
         }
 
-        if (zfile.isEncrypted())
-        {
+        if (zfile.isEncrypted()) {
             zfile.setPassword(passwd.toCharArray());
         }
         zfile.extractAll(dest);
     }
 
-    public static String buildDestFileName(File srcfile, String dest)
-    {
-        if (dest == null)
-        {
-            if (srcfile.isDirectory())
-            {
+    public static String buildDestFileName(File srcfile, String dest) {
+        if (dest == null) {
+            if (srcfile.isDirectory()) {
                 dest = srcfile.getParent() + File.separator + srcfile.getName() + ".zip";
-            }
-            else
-            {
+            } else {
                 String filename = srcfile.getName().substring(0, srcfile.getName().lastIndexOf("."));
                 dest = srcfile.getParent() + File.separator + filename + ".zip";
             }
-        }
-        else
-        {
+        } else {
             createPath(dest);//路径的创建
-            if (dest.endsWith(File.separator))
-            {
+            if (dest.endsWith(File.separator)) {
                 String filename = "";
-                if (srcfile.isDirectory())
-                {
+                if (srcfile.isDirectory()) {
                     filename = srcfile.getName();
-                }
-                else
-                {
+                } else {
                     filename = srcfile.getName().substring(0, srcfile.getName().lastIndexOf("."));
                 }
                 dest += filename + ".zip";
@@ -124,20 +100,15 @@ public class ZipUtil
         return dest;
     }
 
-    private static void createPath(String dest)
-    {
+    private static void createPath(String dest) {
         File destDir = null;
-        if (dest.endsWith(File.separator))
-        {
+        if (dest.endsWith(File.separator)) {
             destDir = new File(dest);//给出的是路径时
-        }
-        else
-        {
+        } else {
             destDir = new File(dest.substring(0, dest.lastIndexOf(File.separator)));
         }
 
-        if (!destDir.exists())
-        {
+        if (!destDir.exists()) {
             destDir.mkdirs();
         }
     }

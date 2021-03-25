@@ -7,7 +7,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser() {
-        return new User("张三",18);
+        return new User("张三", 18);
     }
 
 }

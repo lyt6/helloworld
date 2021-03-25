@@ -6,13 +6,15 @@ package com.helloworld.demo.design.strategy;
 interface Shape {
     void draw();
 }
-class Circle implements Shape{
+
+class Circle implements Shape {
     @Override
     public void draw() {
         System.out.println("draw circle ...");
     }
 }
-class Square implements Shape{
+
+class Square implements Shape {
     @Override
     public void draw() {
         System.out.println("draw square ...");
@@ -22,16 +24,18 @@ class Square implements Shape{
 /**
  * 涂色工厂
  */
-interface Color{
+interface Color {
     void fill();
 }
-class Red implements Color{
+
+class Red implements Color {
     @Override
     public void fill() {
         System.out.println("fill red .. ");
     }
 }
-class Black implements Color{
+
+class Black implements Color {
     @Override
     public void fill() {
         System.out.println("fill black ...");
@@ -41,65 +45,69 @@ class Black implements Color{
 /**
  * 抽象工厂
  */
-abstract class AbstractFactory{
-   abstract Shape getShape(String shape);
-   abstract Color getColor(String color);
+abstract class AbstractFactory {
+    abstract Shape getShape(String shape);
+
+    abstract Color getColor(String color);
 }
 
-class ShapeFactory extends AbstractFactory{
+class ShapeFactory extends AbstractFactory {
     @Override
     Shape getShape(String shape) {
-        if(shape == null){
+        if (shape == null) {
             return null;
         }
-        if(shape.equals("CIRCLE")){
+        if (shape.equals("CIRCLE")) {
             return new Circle();
-        }else if(shape.equals("SQUARE")){
+        } else if (shape.equals("SQUARE")) {
             return new Square();
-        }else{
+        } else {
             return null;
         }
     }
+
     @Override
     Color getColor(String color) {
         return null;
     }
 }
 
-class ColorFactory extends AbstractFactory{
+class ColorFactory extends AbstractFactory {
     @Override
     Shape getShape(String shape) {
         return null;
     }
+
     @Override
     Color getColor(String color) {
-        if(color == null){
+        if (color == null) {
             return null;
         }
-        if(color.equals("RED")){
+        if (color.equals("RED")) {
             return new Red();
-        }else if(color.equals("BLACK")){
+        } else if (color.equals("BLACK")) {
             return new Black();
-        }else{
+        } else {
             return null;
         }
     }
 }
 
 class FactoryProducer {
-    public AbstractFactory  getFactory(String factoryType){
-        if(factoryType == null){
+    public AbstractFactory getFactory(String factoryType) {
+        if (factoryType == null) {
             return null;
         }
-        if(factoryType.equals("SHAPE")){
+        if (factoryType.equals("SHAPE")) {
             return new ShapeFactory();
-        }else if(factoryType.equals("COLOR")){
+        } else if (factoryType.equals("COLOR")) {
             return new ColorFactory();
         }
         return null;
     }
 }
-class TestFactory{
+
+class TestFactory {
     public static void main(String[] args) {
         FactoryProducer factoryProducer = new FactoryProducer();
         AbstractFactory shape = factoryProducer.getFactory("SHAPE");

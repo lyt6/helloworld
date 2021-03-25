@@ -1,19 +1,20 @@
-package com.helloworld.demo;
+package com.helloworld.demo.leetcode;
 
 public class Interview {
 
-    public static void question1_method1(){
-        String s  = "how are you";
+    public static void question1_method1() {
+        String s = "how are you";
         String s1 = s.replaceAll(" ", "%20");
         System.out.println(s1);
     }
-    public static void question1_method2(){
-        String s  = "how are you";
+
+    public static void question1_method2() {
+        String s = "how are you";
         StringBuilder builder = new StringBuilder();
         for (char c : s.toCharArray()) {
-            if(c == ' '){
+            if (c == ' ') {
                 builder.append("%20");
-            }else{
+            } else {
                 builder.append(c);
             }
         }

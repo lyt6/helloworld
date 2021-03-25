@@ -14,19 +14,19 @@ public class TestOdd {
 
 
     /**
-     *  是否是奇数
-     *  正数 对2取余 结果0/1
-     *  负数 对2取余 结果0/-1
-     *
-     *  结果只有0 1 -1
+     * 是否是奇数
+     * 正数 对2取余 结果0/1
+     * 负数 对2取余 结果0/-1
+     * <p>
+     * 结果只有0 1 -1
      *
      * @param number
      * @return
      */
-    public static boolean isOdd(int number){
+    public static boolean isOdd(int number) {
         //return number%2 == 1 || number%2 == -1;
         //return number%2 != 0;
-        return (number&1) == 1;
+        return (number & 1) == 1;
     }
 
 

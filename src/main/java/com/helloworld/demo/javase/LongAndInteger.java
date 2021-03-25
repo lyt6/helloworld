@@ -7,10 +7,10 @@ public class LongAndInteger {
 
     public static void main(String[] args) {
         HashMap map = new HashMap();
-        map.put(null,null);
+        map.put(null, null);
 
         Hashtable table = new Hashtable();
-        table.put(null,null);
+        table.put(null, null);
 
     }
 }
