@@ -6,6 +6,7 @@ import java.util.Map;
 class LRUCache {
 
     LinkedHashMap<Integer, Integer> linkedHashMap = null;
+
     public LRUCache(int capacity) {
         linkedHashMap = new LinkedHashMap(capacity, 0.75f, true) {
             @Override

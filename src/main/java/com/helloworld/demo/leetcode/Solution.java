@@ -116,8 +116,6 @@ class Solution {
         int width = matrix[0].length;
         int[] result = new int[height * width];
         //四个脚的坐标
-
-
         return result;
     }
 }
