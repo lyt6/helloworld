@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 public class JvmTest {
     public static void main(String[] args) {
-        System.out.println("test jvm ");
         try {
             ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(3);
             //size Integer.Max_VALUE

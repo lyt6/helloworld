@@ -1,4 +1,4 @@
-package com.helloworld.demo.leetcode.tree;
+package com.helloworld.demo.leetcode.binarytree;
 
 import java.util.LinkedList;
 import java.util.Objects;
@@ -9,20 +9,7 @@ import java.util.Stack;
 /**
  * 二叉树反转
  */
-public class BinaryTreeReverse {
-
-    /**
-     * TreeNode
-     */
-    public static class TreeNode {
-        TreeNode left;
-        TreeNode right;
-        int val;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
+public class BinaryTreeInvert {
 
     /**
      * 栈-翻转二叉树
@@ -115,6 +102,21 @@ public class BinaryTreeReverse {
         root.left = right;
         root.right = left;
         return root;
+    }
+
+    public TreeNode reverseTreeByStack(TreeNode root){
+      if(root == null) return null;
+      Stack<TreeNode> stack = new Stack();
+      stack.push(root);
+      while(!stack.empty()){
+          TreeNode node = stack.pop();
+          TreeNode temp = node.left;
+          node.left = node.right;
+          node.right = temp;
+          if(node.left != null) stack.push(node.left);
+          if(node.right != null) stack.push(node.right);
+      }
+      return root;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.helloworld.demo.leetcode.tree;
+package com.helloworld.demo.leetcode;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

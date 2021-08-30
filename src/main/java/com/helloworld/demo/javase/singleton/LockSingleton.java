@@ -28,6 +28,6 @@ public class LockSingleton {
         LockSingleton instance = LockSingleton.getInstance();
         System.out.println("main thread instance is ---- > " + instance);
         new Thread(() -> System.out.println(Thread.currentThread().getName() + " ---- >   " + LockSingleton.getInstance())).start();
-        Lock lock = new ReentrantLock();
     }
+
 }
