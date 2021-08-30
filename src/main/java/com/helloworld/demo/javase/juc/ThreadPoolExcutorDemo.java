@@ -1,9 +1,8 @@
 package com.helloworld.demo.javase.juc;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.*;
 
 class MyRunable implements Runnable {
     @Override
@@ -33,5 +32,20 @@ public class ThreadPoolExcutorDemo {
             threadPoolExecutor.shutdown();
         }
 
+        // new ThreadPoolExecutor(3,5,2L,TimeUnit.SECONDS,new LinkedBlockingQueue<Runnable>(3){},Executors.defaultThreadFactory(),new ThreadPoolExecutor.AbortPolicy());
     }
+
+    public int[] twoSum(int[] nums, int target) {
+        // target 5
+        // nums 1 2 3 4 5
+        HashMap<Integer,Integer> map = new HashMap();
+        for (int i = 0; i < nums.length; i++) {
+            if(map.containsKey(target - nums[i])){
+                return new int[]{map.get(target - nums[i]),i};
+            }
+            map.put(nums[i],i);
+        }
+        return new int[0];
+    }
+
 }

@@ -21,15 +21,11 @@ class LRUCache {
     }
 
     public int get(int key) {
-        Integer value = this.linkedHashMap.get(key);
-        return value == null ? -1 : value;
+        return linkedHashMap.get(key) == null ? -1 : linkedHashMap.get(key);
     }
 
     public void put(int key, int value) {
-        this.linkedHashMap.put(key, value);
+        linkedHashMap.put(key, value);
     }
 
-    public static void main(String[] args) {
-
-    }
 }
