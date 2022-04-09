@@ -1,6 +1,6 @@
 package com.hello.design.pattern.proxy.jdk.impl;
 
-import com.helloworld.entities.User;
+import com.hello.design.pattern.proxy.jdk.User;
 import com.hello.design.pattern.proxy.jdk.UserService;
 
 public class UserServiceImpl implements UserService {
