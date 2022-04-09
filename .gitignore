@@ -10,4 +10,3 @@ target
 logs
 .DS_Store
 *.factorypath
-bin

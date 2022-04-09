@@ -1,0 +1,34 @@
+package com.hello.design.pattern.proxy.jdk;
+
+import com.hello.design.pattern.proxy.jdk.impl.UserServiceImpl;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+public class JdkProxyTest implements InvocationHandler {
+
+    Object target;
+
+    public Object bind(Object target) {
+        this.target = target;
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println("proxy before ... ");
+        Object invoke = method.invoke(target, args);
+        System.out.println("proxy invoke ...");
+        System.out.println("proxy after ... ");
+        return invoke;
+    }
+
+    public static void main(String[] args) {
+        JdkProxyTest jdkProxyTest = new JdkProxyTest();
+        UserService userService = (UserService) jdkProxyTest.bind(new UserServiceImpl());
+        User user = userService.getUser();
+        System.out.println(user.toString());
+    }
+
+}
